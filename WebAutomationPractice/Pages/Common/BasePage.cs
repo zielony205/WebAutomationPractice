@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WebAutomationPractice.Pages.Common
 {
-    class BasePage
+    class BasePage : LoadableComponent<BasePage>
     {
         NavigationPanel navigationPanel;
         protected IWebDriver driver;
@@ -35,6 +35,17 @@ namespace WebAutomationPractice.Pages.Common
         public void ClickOthersHighSite()
         {
             navigationPanel.ClickOthersHighSite();
+        }
+
+        protected override void ExecuteLoad()
+        {
+            driver.Navigate().GoToUrl("https://seleniumui.moderntester.pl/");
+        }
+
+        protected override bool EvaluateLoadedStatus()
+        {
+            string url = driver.Url;
+            return url == "https://seleniumui.moderntester.pl/";
         }
     }
 }
