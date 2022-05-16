@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WebAutomationPractice.Driver\WebAutomationPractice.Driver.csproj" />
-    <ProjectReference Include="..\WebAutomationPractice\WebAutomationPractice.Pages.csproj" />
+    <ProjectReference Include="..\WebAutomationPractice.Pages\WebAutomationPractice.Pages.csproj" />
   </ItemGroup>
 
 </Project>
