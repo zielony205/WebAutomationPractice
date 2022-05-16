@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using WebAutomationPractice.Pages.Common;
 
 namespace WebAutomationPractice.Pages
@@ -42,7 +43,7 @@ namespace WebAutomationPractice.Pages
             alert.Dismiss();
         }
 
-        public string GetPromptAlertText()
+        public string GetAlertMessage()
         {
             var alert = driver.SwitchTo().Alert();
             return alert.Text;
@@ -76,6 +77,12 @@ namespace WebAutomationPractice.Pages
         {
             var text = GetLabelText("/html/body/main/div/p[4]");
             return text;
+        }
+
+        public void WaitForDelayedLabel()
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(d => d.SwitchTo().Alert());
         }
     }
 }
