@@ -8,20 +8,32 @@ namespace WebAutomationPractice.Tests
     public class AlertsPageTests
     {
         private DriverFactory driverFactory;
+        private IWebDriver driver;
+        private AlertsPage page;
 
         [OneTimeSetUp]
-        public void Setup()
+        public void OneTimeSetup()
         {
             driverFactory = new DriverFactory("chrome");
+        }
+
+        [SetUp]
+        public void Setup()
+        {
+            driver = driverFactory.GetDriver();
+            page = new AlertsPage(driver);
+            page.Load();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            driver.Dispose();
         }
 
         [Test]
         public void SimpleAlertAcceptTest()
         {
-            using var driver = driverFactory.GetDriver();
-            var page = new AlertsPage(driver);
-
-            page.Load();
             page.ClickSimpleAlertButton();
             page.DismissAlert();
             var label = page.GetSimpleAlertLabel();
@@ -32,10 +44,6 @@ namespace WebAutomationPractice.Tests
         [Test]
         public void PromptAlertCancelTest()
         {
-            using var driver = driverFactory.GetDriver();
-            var page = new AlertsPage(driver);
-
-            page.Load();
             page.ClickPromptAlertButton();
             page.DismissAlert();
             var label = page.GetPropmptAlertLabel();
@@ -48,10 +56,6 @@ namespace WebAutomationPractice.Tests
         [TestCase("dolor sit amet")]
         public void PromptAlertAcceptTest(string text)
         {
-            using var driver = driverFactory.GetDriver();
-            var page = new AlertsPage(driver);
-
-            page.Load();
             page.ClickPromptAlertButton();
             page.SetPromptAlertText(text);
             page.AcceptAlert();
@@ -63,10 +67,6 @@ namespace WebAutomationPractice.Tests
         [Test]
         public void ConfirmAlertCancelTest()
         {
-            using var driver = driverFactory.GetDriver();
-            var page = new AlertsPage(driver);
-
-            page.Load();
             page.ClickConfirmAlertButton();
             page.DismissAlert();
             var label = page.GetConfirmAlertLabel();
@@ -77,10 +77,6 @@ namespace WebAutomationPractice.Tests
         [Test]
         public void ConfirmAlertAcceptTest()
         {
-            using var driver = driverFactory.GetDriver();
-            var page = new AlertsPage(driver);
-
-            page.Load();
             page.ClickConfirmAlertButton();
             page.AcceptAlert();
             var label = page.GetConfirmAlertLabel();
@@ -91,12 +87,8 @@ namespace WebAutomationPractice.Tests
         [Test]
         public void DelayedAlertAcceptTest()
         {
-            using var driver = driverFactory.GetDriver();
-            var page = new AlertsPage(driver);
-
-            page.Load();
             page.ClickDelayedAlertButton();
-            page.WaitForDelayedLabel();
+            page.WaitForDelayedAlert();
             page.AcceptAlert();
             var label = page.GetDelayedAlertLabel();
 

@@ -79,7 +79,7 @@ namespace WebAutomationPractice.Pages
             return text;
         }
 
-        public void WaitForDelayedLabel()
+        public void WaitForDelayedAlert()
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(d => d.SwitchTo().Alert());
