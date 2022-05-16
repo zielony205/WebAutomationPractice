@@ -3,7 +3,7 @@ using WebAutomationPractice.Pages.Common;
 
 namespace WebAutomationPractice.Pages
 {
-    class HighSitePage : BasePage
+    public class HighSitePage : BasePage
     {
         public HighSitePage(IWebDriver driver) : base(driver)
         {

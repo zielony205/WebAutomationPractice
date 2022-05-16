@@ -3,35 +3,22 @@ using OpenQA.Selenium.Support.UI;
 
 namespace WebAutomationPractice.Pages.Common
 {
-    class BasePage : LoadableComponent<BasePage>
+    public class BasePage : LoadableComponent<BasePage>
     {
-        NavigationPanel navigationPanel;
         protected IWebDriver driver;
         protected string url;
+        NavigationPanel navigation;
+
+        public NavigationPanel Navigation 
+        { 
+            get => navigation;
+        }
+
         public BasePage(IWebDriver driver)
         {
             this.driver = driver;
-            navigationPanel = new NavigationPanel(driver);
+            navigation = new NavigationPanel(driver);
             url = @"https://seleniumui.moderntester.pl/";
-        }
-        public void ClickBasicAlerts()
-        {
-            navigationPanel.ClickBasicAlerts();
-        }
-
-        public void ClickInteractionsDraggable()
-        {
-            navigationPanel.ClickInteractionsDraggable();
-        }
-
-        public void ClickWidgetsAccordion()
-        {
-            navigationPanel.ClickWidgetsAccordion();
-        }
-
-        public void ClickOthersHighSite()
-        {
-            navigationPanel.ClickOthersHighSite();
         }
 
         protected string GetLabelText(string xPath)

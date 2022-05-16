@@ -3,7 +3,7 @@ using WebAutomationPractice.Pages.Common;
 
 namespace WebAutomationPractice.Pages
 {
-    class AlertsPage : BasePage
+    public class AlertsPage : BasePage
     {
         public AlertsPage(IWebDriver driver) : base(driver)
         {

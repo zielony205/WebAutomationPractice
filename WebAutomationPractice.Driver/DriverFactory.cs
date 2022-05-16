@@ -4,7 +4,7 @@ using OpenQA.Selenium.Firefox;
 
 namespace WebAutomationPractice.Driver
 {
-    class DriverFactory
+    public class DriverFactory
     {
         private string browser;
 

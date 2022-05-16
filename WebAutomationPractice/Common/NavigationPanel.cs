@@ -2,7 +2,7 @@
 
 namespace WebAutomationPractice.Pages.Common
 {
-    class NavigationPanel
+    public class NavigationPanel
     {
         IWebDriver driver;
         public NavigationPanel(IWebDriver driver)

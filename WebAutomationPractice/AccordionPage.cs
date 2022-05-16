@@ -3,7 +3,7 @@ using WebAutomationPractice.Pages.Common;
 
 namespace WebAutomationPractice.Pages
 {
-    class AccordionPage : BasePage
+    public class AccordionPage : BasePage
     {
         public AccordionPage(IWebDriver driver) : base(driver)
         {

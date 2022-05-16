@@ -4,7 +4,7 @@ using WebAutomationPractice.Pages.Common;
 
 namespace WebAutomationPractice.Pages
 {
-    class DraggablePage : BasePage
+    public class DraggablePage : BasePage
     {
         public DraggablePage(IWebDriver driver) : base(driver)
         {
