@@ -7,6 +7,7 @@ namespace WebAutomationPractice.Pages
     {
         public AlertsPage(IWebDriver driver) : base(driver)
         {
+            url = "https://seleniumui.moderntester.pl/alerts.php";
         }
 
         public void ClickSimpleAlertButton()
@@ -75,18 +76,6 @@ namespace WebAutomationPractice.Pages
         {
             var text = GetLabelText("/html/body/main/div/p[4]");
             return text;
-        }
-
-        private string GetLabelText(string xPath)
-        {
-            var label = driver.FindElement(By.XPath(xPath));
-            return label.Text;
-        }
-
-        private void ClickButton(string xPath)
-        {
-            var button = driver.FindElement(By.XPath(xPath));
-            button.Click();
         }
     }
 }

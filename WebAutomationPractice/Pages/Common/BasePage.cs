@@ -7,10 +7,12 @@ namespace WebAutomationPractice.Pages.Common
     {
         NavigationPanel navigationPanel;
         protected IWebDriver driver;
+        protected string url;
         public BasePage(IWebDriver driver)
         {
             this.driver = driver;
             navigationPanel = new NavigationPanel(driver);
+            url = @"https://seleniumui.moderntester.pl/";
         }
         public void ClickBasicAlerts()
         {
@@ -32,15 +34,33 @@ namespace WebAutomationPractice.Pages.Common
             navigationPanel.ClickOthersHighSite();
         }
 
+        protected string GetLabelText(string xPath)
+        {
+            var label = driver.FindElement(By.XPath(xPath));
+            return label.Text;
+        }
+
+        protected void ClickButton(string xPath)
+        {
+            var button = driver.FindElement(By.XPath(xPath));
+            button.Click();
+        }
+
+        protected bool IsElementVisible(string xPath)
+        {
+            var element = driver.FindElement(By.XPath(xPath));
+            return element.Displayed;
+        }
+
         protected override void ExecuteLoad()
         {
-            driver.Navigate().GoToUrl("https://seleniumui.moderntester.pl/");
+            driver.Navigate().GoToUrl(url);
         }
 
         protected override bool EvaluateLoadedStatus()
         {
-            string url = driver.Url;
-            return url == "https://seleniumui.moderntester.pl/";
+            string currentUrl = driver.Url;
+            return currentUrl == url;
         }
     }
 }
